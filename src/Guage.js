@@ -1,6 +1,6 @@
 import Angle from "../lib/Angle.js";
 import Point from "../lib/Point.js";
-
+import throttle from "../lib/throttle.js";
 
 /** 게이지 차트 컴포넌트 */
 class Guage{
@@ -54,7 +54,7 @@ class Guage{
         this.initChart();
         this.setChartRadian();
         
-        window.addEventListener('resize', this.onResize);
+        window.addEventListener('resize', throttle(this.onResize, 50));
 
         this.render();
     }
