@@ -1,6 +1,7 @@
 import Angle from "../lib/Angle.js";
 import Point from "../lib/Point.js";
 
+
 /** 게이지 차트 컴포넌트 */
 class Guage{
 
@@ -140,7 +141,6 @@ class Guage{
         
         // 1초가 지나면 새로운 radian 생성
         if(timeDiff >= 1000){
-            console.log('----------------')
             // -20 <= x < 20 의 radian
             this.raf.radianDiff = Angle.getRandianFromDegree((Math.random() - 0.5) * 60);
             this.raf.timestamp = timestamp;
@@ -158,8 +158,7 @@ class Guage{
             }
             this.chart.radian.target = radianTarget;
         }
-        // 새로운 radian을 생성한 후 바로 게이지 바를 움직이면 
-        // 요구사항에 맞지 않아 0.3초 이후부터 게이지 바를 움직이도록 정의
+        // 새로운 radian을 생성한 후 바로 게이지 바를 움직이면 요구사항에 맞지 않아 0.3초 이후부터 게이지 바를 움직이도록 정의
         else if(timeDiff >= 300 && this.raf.radianDiff !== 0){
 
             // 0.01 radian(= 0.05... degree) 미만으로 움직여야 하는 경우 
@@ -190,9 +189,10 @@ class Guage{
     }
 
     /**
-     * 
-     * @param {number} radain 
-     * @returns {number} 0도에서 떨어져 있는 만큼 보정한 각도
+     * canvas의 arc 메서드의 startAngle이 45 degree이기 때문에 해당 호를 회전해 startAngle이 0 degree에서 시작하도록 보정
+     * 보정한 상태에서 인자가 어떤 값을 가지는지 계산해 리턴
+     * @param {number} radin - 변환하고자 하는 radian
+     * @returns {number} startAngle이 0에서 시작한다고 가정했을 때의 값
      */
     normalizeRadian(radain){
         return Angle.normalizeRadian(radain, Angle.getRandianFromDegree(this.chart.degree.ROATED));
