@@ -54,7 +54,8 @@ class Guage{
         this.initChart();
         this.setChartRadian();
         
-        window.addEventListener('resize', throttle(this.onResize, 50));
+        //window.addEventListener('resize', throttle(this.onResize, 50));
+        window.addEventListener('resize', this.onResize);
 
         this.render();
     }
