@@ -5,36 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const guageChart = new Guage({
         $parent: document.querySelector("#app"),
     });
-    new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });
-    
     
     const randomCheckbox = new RandomCheckbox({
         $parent: document.querySelector('#app'),
