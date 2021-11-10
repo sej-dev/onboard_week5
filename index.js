@@ -2,46 +2,18 @@ import Guage from "./src/Guage.js";
 import RandomCheckbox from "./src/RandomCheckbox.js";
 
 window.addEventListener('DOMContentLoaded', () => {
-    const guageChart = new Guage({
-        $parent: document.querySelector("#app"),
-    });
-    new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });new Guage({
-        $parent: document.querySelector("#app"),
-    });
-    
+    const guages = [];
+    const $app = document.querySelector("#app");
+    for (let i = 0; i < 20; i++) {
+        guages.push( new Guage({ $parent: $app }) );
+    }
     
     const randomCheckbox = new RandomCheckbox({
         $parent: document.querySelector('#app'),
         onChange: (evt) => {
             const isSimulateMode = evt.target.checked;
-            if(isSimulateMode) guageChart.startSimulate();
-            else guageChart.stopSimulate();
+            if(isSimulateMode) guages.forEach(guage => guage.startSimulate());
+            else guages.forEach(guage => guage.startSimulate());
         }
     });
 });
