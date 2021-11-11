@@ -149,7 +149,7 @@ class Guage{
             let radianTarget = this.raf.radianDiff + this.chart.radian.mid;
 
             // 목표 radian이 2*PI 값보다 커졌을 경우가 존재하기 때문 
-            radianTarget %= Angle.CIRCUMFERENCE;
+            radianTarget %= Angle.RADIAN_CIRCUMFERENCE;
             
             // 시작 radian <= x <= 끝 radian일 때, 게이지 차트를 벗어나기 때문에 종료
             if(radianTarget >= this.chart.radian.START && radianTarget <= this.chart.radian.END) {
@@ -193,7 +193,7 @@ class Guage{
      * @returns {number} 퍼센트 값
      */
     calcPercent(){
-        const current = (this.chart.radian.target + Angle.CIRCUMFERENCE - this.chart.radian.END ) % Angle.CIRCUMFERENCE;
+        const current = (this.chart.radian.target + Angle.RADIAN_CIRCUMFERENCE - this.chart.radian.END ) % Angle.RADIAN_CIRCUMFERENCE;
         const percent = (current / this.chart.radian.TOTAL * 100).toFixed(1);
         return percent;
     }
