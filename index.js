@@ -4,8 +4,13 @@ import RandomCheckbox from "./src/RandomCheckbox.js";
 window.addEventListener('DOMContentLoaded', () => {
     const guages = [];
     const $app = document.querySelector("#app");
-    for (let i = 0; i < 20; i++) {
-        guages.push( new Guage({ $parent: $app }) );
+    for (let i = 0; i < 25; i++) {
+
+        const $div = document.createElement('div');
+        $div.className = 'cell';
+        $app.appendChild($div);
+        
+        guages.push( new Guage({ $parent: $div }) );
     }
     
     const randomCheckbox = new RandomCheckbox({

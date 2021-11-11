@@ -24,6 +24,13 @@ class Guage{
             center: null,
             radius: null,
 
+            degree: {
+                START: 45,
+                MID: 270,
+                END: 135,
+                TOTAL: 360 - (135 - 45),
+                ROATED: 45,
+            },
             radian: {
                 START: null,
                 END: null,
@@ -32,13 +39,6 @@ class Guage{
                 mid: null,
                 target: null,
             },
-            degree: {
-                START: 45,
-                MID: 270,
-                END: 135,
-                TOTAL: 360 - (135 - 45),
-                ROATED: 45,
-            }
         };
 
         // requestAnimationFrame에서 사용되는 field
@@ -54,8 +54,8 @@ class Guage{
         this.initChart();
         this.setChartRadian();
         
-        //window.addEventListener('resize', throttle(this.onResize, 50));
-        window.addEventListener('resize', this.onResize);
+        window.addEventListener('resize', throttle(this.onResize, 50));
+        //window.addEventListener('resize', this.onResize);
 
         this.render();
     }
@@ -142,7 +142,7 @@ class Guage{
         
         // 1초가 지나면 새로운 radian 생성
         if(timeDiff >= 1000){
-            // -20 <= x < 20 의 radian
+            // -30 <= x < 30 의 radian
             this.raf.radianDiff = Angle.getRandianFromDegree((Math.random() - 0.5) * 60);
             this.raf.timestamp = timestamp;
             
@@ -171,7 +171,7 @@ class Guage{
             // 0.01 radian 이상일 때
             else{
                 // 부드러운 움직임을 위해 각 frame마다 간격 조절
-                const move = Math.abs((500 - timeDiff) / 1000) * this.raf.radianDiff; 
+                const move = Math.abs((timeDiff - 650) / 1000) * this.raf.radianDiff; 
                 this.chart.radian.mid += move;
                 this.raf.radianDiff -= move;
             } 
