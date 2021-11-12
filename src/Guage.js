@@ -78,7 +78,7 @@ class Guage{
         this.$canvas.width = parseInt(width.replace('px')) * dpr;
         this.$canvas.height = parseInt(height.replace('px')) * dpr;
 
-        //this.ctx.scale(dpr, dpr);
+        this.ctx.scale(dpr, dpr);
     }
 
     /**
@@ -158,7 +158,7 @@ class Guage{
             this.chart.radian.target = radianTarget;
         }
         // 새로운 radian을 생성한 후 바로 게이지 바를 움직이면 7-b 요구사항에 맞지 않는 것 같아 0.3초 이후부터 게이지 바를 움직이도록 정의
-        else if(timeDiff >= 300 && this.raf.radianDiff !== 0){
+        else if(this.raf.radianDiff !== 0){
             
             // 0.01 radian(= 0.05... degree) 미만으로 움직여야 하는 경우 
             const isRemainSmall = Math.abs(this.raf.radianDiff) > 0 && Math.abs(this.raf.radianDiff) < 0.01;
@@ -169,7 +169,7 @@ class Guage{
             // 0.01 radian 이상일 때
             else{
                 // 점진적으로 움직이는 모습을 위해 각 frame마다 간격 조절
-                const move = Math.abs((timeDiff - 650) / 1000) * this.raf.radianDiff; 
+                const move = Math.abs(timeDiff / 1000) * this.raf.radianDiff; 
                 this.chart.radian.mid += move;
                 this.raf.radianDiff -= move;
             } 
