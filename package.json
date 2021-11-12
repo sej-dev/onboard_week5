@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "doc": "jsdoc.cmd -c ./jsdoc.config.json .",
+    "doc": "jsdoc.cmd -c ./jsdoc.config.json --readme ./doc/etc/readme.md .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
